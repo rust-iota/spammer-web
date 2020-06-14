@@ -1,17 +1,32 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Spammer />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Spammer from './components/Spammer.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Spammer
+  },
+  created() {
+    console.log("created");
+
+
+    const uri = 'https://nodes.comnet.thetangle.org'
+    this.$iota.addNode(uri).then(() => {
+
+        this.$iota.getNodeInfo().then(nodeInfo => {
+
+            console.log("nodeInfo", nodeInfo)
+        })
+
+    })
+
   }
 }
 </script>
