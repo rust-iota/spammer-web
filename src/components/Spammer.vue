@@ -1,12 +1,18 @@
 <template>
   <div class="spammer">
-    <button @click="onClick">Send</button>
+    <v-btn color="primary" @click="onClick">Send</v-btn>
+    <pre>{{response}}</pre>
   </div>
 </template>
 
 <script>
 export default {
   name: 'Spammer',
+  data() {
+    return {
+      response: null
+    }
+  },
   methods: {
     onClick() {
       console.log("log", this.$iota)
@@ -30,6 +36,7 @@ export default {
       
      this.$iota.sendTransfers(seed, transfers, minimumWeightMagnitude).then((data) => {
        console.log("data", data)
+       this.response = data
      })
     }
   }

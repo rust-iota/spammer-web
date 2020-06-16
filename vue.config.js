@@ -5,6 +5,9 @@ module.exports = {
     publicPath: process.env.NODE_ENV === 'production'
     ? '/spammer-web/'
     : '/',
+    transpileDependencies: [
+      "vuetify"
+    ],
     configureWebpack: {
         plugins: [
             new CopyWebpackPlugin({
